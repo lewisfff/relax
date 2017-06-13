@@ -3,7 +3,15 @@ class Game {
 
     constructor(args) {
         this.stage = document.getElementById('game-stage');
+        this.spawnCircle();
+    }
+
+    spawnCircle() {
         this.circle = new Circle(this.stage);
+        this.circle.element.addEventListener('mouseover', () => {
+            this.circle.destroy();
+            this.spawnCircle();
+        },  false);
     }
 
 }
@@ -30,11 +38,15 @@ class Circle {
 
     render() {
         this._mapCoordinates();
-        let div = document.createElement('div');
-        div.classList.add('circle');
-        div.style.transform = "translateX(" + this.x
+        this.element = document.createElement('div');
+        this.element.classList.add('circle');
+        this.element.style.transform = "translateX(" + this.x
             + "%) translateY(" + this.y + "%)";
-        this.stage.prepend(div);
+        this.stage.prepend(this.element);
+    }
+
+    destroy() {
+        this.stage.removeChild(this.element);
     }
 
 }
