@@ -70,7 +70,25 @@
 /* 0 */
 /***/ (function(module, exports) {
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 console.log('loaded');
+
+// circle appears
+// cursor on circle makes it disappear
+// another circle appears
+// score up for hitting circle
+// score down over time
+// red/outline circle must be clicked not hovered
+
+var Game = function Game(args) {
+    _classCallCheck(this, Game);
+}
+// code
+
+
+// methods
+;
 
 /***/ }),
 /* 1 */
