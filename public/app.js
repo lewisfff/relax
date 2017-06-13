@@ -70,25 +70,54 @@
 /* 0 */
 /***/ (function(module, exports) {
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-console.log('loaded');
-
-// circle appears
-// cursor on circle makes it disappear
-// another circle appears
-// score up for hitting circle
-// score down over time
-// red/outline circle must be clicked not hovered
 
 var Game = function Game(args) {
     _classCallCheck(this, Game);
-}
-// code
 
+    this.stage = document.getElementById('game-stage');
+    this.circle = new Circle(this.stage);
+};
 
-// methods
-;
+var Circle = function () {
+    function Circle(stage) {
+        var xpos = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : -1;
+        var ypos = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : -1;
+        var type = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'normal';
+
+        _classCallCheck(this, Circle);
+
+        this.stage = stage;
+        this.x = xpos;
+        this.y = ypos;
+        this.type = type;
+        this.mapPosition();
+    }
+
+    _createClass(Circle, [{
+        key: 'mapPosition',
+        value: function mapPosition() {
+            if (this.x === -1 || this.y === -1) {
+                this.x = Math.random();
+                this.y = Math.random();
+            }
+
+            var div = document.createElement('div');
+            div.classList.add('circle');
+            div.style.transform = "translateX(" + this.x * 1000 + "%) translateY(" + this.y * 1000 + "%)";
+            this.stage.prepend(div);
+            console.log(div.style.transform);
+        }
+    }]);
+
+    return Circle;
+}();
+
+window.addEventListener('load', function () {
+    return new Game();
+});
 
 /***/ }),
 /* 1 */
