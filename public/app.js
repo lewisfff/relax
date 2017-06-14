@@ -79,7 +79,8 @@ var Game = function () {
         _classCallCheck(this, Game);
 
         this.stage = document.getElementById('game-stage');
-        this.spawnCircle();
+        this.circle = new Circle(this.stage);
+        this.circleEvent();
     }
 
     _createClass(Game, [{
@@ -89,8 +90,7 @@ var Game = function () {
 
             this.circle = new Circle(this.stage);
             this.circle.element.addEventListener('mouseover', function () {
-                _this.circle.destroy();
-                _this.spawnCircle();
+                _this.circle.updateposition();
             }, false);
         }
     }]);
@@ -110,12 +110,12 @@ var Circle = function () {
         this.x = xpos;
         this.y = ypos;
         this.type = type;
-        this.render();
+        this.create();
     }
 
     _createClass(Circle, [{
-        key: '_mapCoordinates',
-        value: function _mapCoordinates() {
+        key: 'mapCoordinates',
+        value: function mapCoordinates() {
             if (this.x === -1 || this.y === -1) {
                 this.x = Math.random();
                 this.y = Math.random();
@@ -125,11 +125,15 @@ var Circle = function () {
             this.y *= 1000;
         }
     }, {
-        key: 'render',
-        value: function render() {
-            this._mapCoordinates();
+        key: 'create',
+        value: function create() {
             this.element = document.createElement('div');
             this.element.classList.add('circle');
+            this.updatePosition();
+        }
+    }, {
+        key: 'updatePosition',
+        value: function updatePosition() {
             this.element.style.transform = "translateX(" + this.x + "%) translateY(" + this.y + "%)";
             this.stage.prepend(this.element);
         }

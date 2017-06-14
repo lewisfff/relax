@@ -3,14 +3,14 @@ class Game {
 
     constructor(args) {
         this.stage = document.getElementById('game-stage');
-        this.spawnCircle();
+        this.circle = new Circle(this.stage);
+        this.circleEvent();
     }
 
     spawnCircle() {
         this.circle = new Circle(this.stage);
         this.circle.element.addEventListener('mouseover', () => {
-            this.circle.destroy();
-            this.spawnCircle();
+            this.circle.updateposition();
         },  false);
     }
 
@@ -23,10 +23,10 @@ class Circle {
         this.x = xpos;
         this.y = ypos;
         this.type = type;
-        this.render();
+        this.create();
     }
 
-    _mapCoordinates() {
+    mapCoordinates() {
         if (this.x === -1 || this.y === -1) {
             this.x = Math.random();
             this.y = Math.random();
@@ -36,10 +36,13 @@ class Circle {
         this.y *= 1000;
     }
 
-    render() {
-        this._mapCoordinates();
+    create() {
         this.element = document.createElement('div');
         this.element.classList.add('circle');
+        this.updatePosition();
+    }
+
+    updatePosition() {
         this.element.style.transform = "translateX(" + this.x
             + "%) translateY(" + this.y + "%)";
         this.stage.prepend(this.element);
