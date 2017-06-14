@@ -1,1 +1,164 @@
-!function(e){function t(i){if(n[i])return n[i].exports;var r=n[i]={i:i,l:!1,exports:{}};return e[i].call(r.exports,r,r.exports,t),r.l=!0,r.exports}var n={};t.m=e,t.c=n,t.i=function(e){return e},t.d=function(e,n,i){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:i})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="",t(t.s=2)}([function(e,t){function n(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var i=function(){function e(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(t,n,i){return n&&e(t.prototype,n),i&&e(t,i),t}}(),r=function(){function e(t){n(this,e),this.stage=document.getElementById("game-stage"),this.circle=new o(this.stage),this.circleEvent()}return i(e,[{key:"circleEvent",value:function(){var e=this;this.circle.element.addEventListener("mouseover",function(){e.circle.updatePosition()},!1)}}]),e}(),o=function(){function e(t){var i=arguments.length>1&&void 0!==arguments[1]?arguments[1]:-1,r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:-1,o=arguments.length>3&&void 0!==arguments[3]?arguments[3]:"normal";n(this,e),this.stage=t,this.x=i,this.y=r,this.type=o,this.create()}return i(e,[{key:"mapCoordinates",value:function(){this.x=1e3*Math.random(),this.y=1e3*Math.random()}},{key:"create",value:function(){this.element=document.createElement("div"),this.element.classList.add("circle"),this.updatePosition()}},{key:"updatePosition",value:function(){this.mapCoordinates(),this.element.style.transform="translate("+this.x+"%, "+this.y+"%)",this.stage.prepend(this.element)}},{key:"destroy",value:function(){this.stage.removeChild(this.element)}}]),e}();window.addEventListener("load",function(){return new r})},function(e,t){},function(e,t,n){n(0),e.exports=n(1)}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+/******/
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// identity function for calling harmony imports with the correct context
+/******/ 	__webpack_require__.i = function(value) { return value; };
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports) {
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Game = function () {
+    function Game(args) {
+        _classCallCheck(this, Game);
+
+        this.stage = document.getElementById('game-stage');
+        this.circle = new Circle(this.stage);
+        this.circleEvent();
+    }
+
+    _createClass(Game, [{
+        key: 'circleEvent',
+        value: function circleEvent() {
+            var _this = this;
+
+            this.circle.element.addEventListener('mouseover', function () {
+                _this.circle.updatePosition();
+            }, false);
+        }
+    }]);
+
+    return Game;
+}();
+
+var Circle = function () {
+    function Circle(stage) {
+        var xpos = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : -1;
+        var ypos = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : -1;
+        var type = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'normal';
+
+        _classCallCheck(this, Circle);
+
+        this.stage = stage;
+        this.x = xpos;
+        this.y = ypos;
+        this.type = type;
+        this.create();
+    }
+
+    _createClass(Circle, [{
+        key: 'mapCoordinates',
+        value: function mapCoordinates() {
+            this.x = Math.random() * 1000;
+            this.y = Math.random() * 1000;
+        }
+    }, {
+        key: 'create',
+        value: function create() {
+            this.element = document.createElement('div');
+            this.element.classList.add('circle');
+            this.stage.prepend(this.element);
+            this.updatePosition();
+        }
+    }, {
+        key: 'updatePosition',
+        value: function updatePosition() {
+            this.mapCoordinates();
+            this.element.style.transform = "translate(" + this.x + "%, " + this.y + "%)";
+        }
+    }, {
+        key: 'destroy',
+        value: function destroy() {
+            this.stage.removeChild(this.element);
+        }
+    }]);
+
+    return Circle;
+}();
+
+window.addEventListener('load', function () {
+    return new Game();
+});
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(0);
+module.exports = __webpack_require__(1);
+
+
+/***/ })
+/******/ ]);

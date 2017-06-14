@@ -33,6 +33,7 @@ class Circle {
     create() {
         this.element = document.createElement('div');
         this.element.classList.add('circle');
+        this.stage.prepend(this.element);
         this.updatePosition();
     }
 
@@ -40,7 +41,6 @@ class Circle {
         this.mapCoordinates();
         this.element.style.transform = "translate(" + this.x
             + "%, " + this.y + "%)";
-        this.stage.prepend(this.element);
     }
 
     destroy() {
