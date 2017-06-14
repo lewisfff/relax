@@ -7,10 +7,9 @@ class Game {
         this.circleEvent();
     }
 
-    spawnCircle() {
-        this.circle = new Circle(this.stage);
+    circleEvent() {
         this.circle.element.addEventListener('mouseover', () => {
-            this.circle.updateposition();
+            this.circle.updatePosition();
         },  false);
     }
 
@@ -27,13 +26,8 @@ class Circle {
     }
 
     mapCoordinates() {
-        if (this.x === -1 || this.y === -1) {
-            this.x = Math.random();
-            this.y = Math.random();
-        }
-
-        this.x *= 1000;
-        this.y *= 1000;
+        this.x = Math.random() * 1000;
+        this.y = Math.random() * 1000;
     }
 
     create() {
@@ -43,8 +37,9 @@ class Circle {
     }
 
     updatePosition() {
-        this.element.style.transform = "translateX(" + this.x
-            + "%) translateY(" + this.y + "%)";
+        this.mapCoordinates();
+        this.element.style.transform = "translate(" + this.x
+            + "%, " + this.y + "%)";
         this.stage.prepend(this.element);
     }
 
